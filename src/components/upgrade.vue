@@ -28,13 +28,19 @@ export default {
   methods: {
     buy(upgrade) {
       this.$store.dispatch("buy", upgrade);
-      if (upgrade.auto == true) {
-        clearInterval(this.auto);
-      }
-      this.auto = setInterval(() => {
-        this.$store.dispatch("autoClick", upgrade);
-      }, 3000);
     }
+    // buyIdleUpgrade() {
+    //   if (this.idleCount == 0) {
+    //     this.startIdleMiner();
+    //     this.idleCount++;
+    //   }
+    // },
+    // startIdleMiner() {
+    //   setInterval(this.idleMine, 3000);
+    // },
+    // idleMine() {
+    //   this.$store.dispatch("idleMiner");
+    // }
   },
   computed: {
     upgrades() {
@@ -56,6 +62,7 @@ export default {
     font-weight: bold;
   }
 }
+
 &.unavailable {
   user-select: none;
   pointer-events: none;

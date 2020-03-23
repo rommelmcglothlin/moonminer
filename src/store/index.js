@@ -13,7 +13,7 @@ export default new Vuex.Store({
         quantity: 0,
         multiplier: 1,
         img: "images/pickaxe.png",
-        auto: false
+        click: "normal"
       },
       {
         id: "2002",
@@ -22,7 +22,7 @@ export default new Vuex.Store({
         quantity: 0,
         multiplier: 2,
         img: "images/shovel.png",
-        auto: false
+        click: "normal"
       },
       {
         id: "3001",
@@ -31,7 +31,7 @@ export default new Vuex.Store({
         quantity: 0,
         multiplier: 4,
         img: "images/teammate.png",
-        auto: true
+        click: "auto"
       },
       {
         id: "3002",
@@ -40,7 +40,7 @@ export default new Vuex.Store({
         quantity: 0,
         multiplier: 8,
         img: "images/rover.png",
-        auto: true
+        click: "auto"
       }
     ],
     cheeseCount: 0,
@@ -72,14 +72,6 @@ export default new Vuex.Store({
       let newUpgrade = state.upgrades.find(i => i.id == upgrade.id);
       if (newUpgrade) {
         commit("updateOptions", newUpgrade);
-      } else {
-        return;
-      }
-    },
-    async autoClick({ commit, state }, upgrade) {
-      let found = state.upgrades.find(a => a.auto == upgrade.auto);
-      if (found.auto == true) {
-        commit("updateCheese");
       } else {
         return;
       }
