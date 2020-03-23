@@ -48,7 +48,7 @@ export default new Vuex.Store({
     totalCount: 0
   },
   mutations: {
-    updateCount(state) {
+    updateCount(state, upgrade) {
       state.cheeseCount++;
       state.totalCount++;
     },
@@ -56,11 +56,12 @@ export default new Vuex.Store({
       state.cheeseCount -= upgrade.price;
       upgrade.quantity++;
       upgrade.multiplier = upgrade.multiplier * upgrade.quantity;
+      upgrade.multiplier += state.cheeseCount;
       upgrade.price *= 2;
     }
   },
   actions: {
-    async collectCheese({ commit }) {
+    async collectCheese({ commit }, upgrade) {
       commit("updateCount");
     },
     async buy({ commit, state }, upgrade) {

@@ -17,11 +17,6 @@
 <script>
 export default {
   name: "Upgrade",
-  data() {
-    return {
-      auto: null
-    };
-  },
   props: {
     upgrade: { type: Object }
   },
@@ -45,6 +40,9 @@ export default {
   computed: {
     upgrades() {
       return this.$store.state.upgrades;
+    },
+    cheeseCount() {
+      return this.$store.state.cheeseCount;
     }
   }
 };
