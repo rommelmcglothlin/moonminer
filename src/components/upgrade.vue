@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-content-around">
     <div v-for="upgrade in upgrades" :key="upgrade.id">
-      <img :src="upgrade.img" height="100" @click="buy(upgrade)" />
+      <img :src="upgrade.img" height="100" />
       <p class="pt-4 text-light h">
         Cost:
         <b>{{ upgrade.price }}</b>
@@ -9,6 +9,13 @@
       <p class="text-light m-auto">
         <b>Pieces of Cheese</b>
       </p>
+      <span>
+        <button
+          :disabled="cheeseCount < upgrade.price"
+          class="pl-2 btn btn-primary text-light"
+          @click="buy(upgrade)"
+        >Buy</button>
+      </span>
     </div>
   </div>
 </template>
@@ -50,21 +57,4 @@ export default {
 
 
 <style>
-/* .upgrade-item {
-  padding: 20px;
-  background-color: lightslategray;
-  text-align: center;
-  .item-name {
-    color: white;
-    text-align: center;
-    font-weight: bold;
-  }
-}
-
-&.unavailable {
-  user-select: none;
-  pointer-events: none;
-  color: red !important;
-  filter: grayscale(1);
-} */
 </style>

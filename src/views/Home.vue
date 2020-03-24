@@ -74,11 +74,6 @@ body {
   background: url(../assets/sky.png) no-repeat center center;
   background-size: cover;
   height: 100vh;
-  /* width: 100vw; */
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
-  /* flex-direction: column; */
 }
 
 .space {

@@ -60,8 +60,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async collectCheese({ commit }) {
-      commit("updateCount");
+    async collectCheese({ commit }, state, upgrade) {
+      let multiply = state.upgrades;
+      if (multiply.length > 0) {
+        state.upgrades.forEach(u => {
+          state.cheeseCount += u.multiplier;
+          state.totalCount += u.multiplier;
+        });
+      }
+      commit("updateCount", multiply);
     },
     async buy({ commit, state }, upgrade) {
       let cheeseCount = state.cheeseCount;
